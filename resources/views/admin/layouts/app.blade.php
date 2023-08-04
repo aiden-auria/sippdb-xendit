@@ -26,18 +26,18 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
-    @include('admin.layouts.partials.sidebar')
+    @include('admin.layouts.backend.sidebar')
 
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        @include('admin.layouts.partials.navbar')
+        @include('admin.layouts.backend.navbar')
 
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             @yield('content')
         </div>
         <div class="container-fluid py-4">
-            @include('admin.layouts.partials.footer')
+            @include('admin.layouts.backend.footer')
         </div>
     </main>
     <!--   Core JS Files   -->
