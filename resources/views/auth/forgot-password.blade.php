@@ -1,21 +1,25 @@
-@extends('layouts.login')
+<x-guest-layout>
+    <div class="mb-4 text-sm text-gray-600">
+        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+    </div>
 
-@section('content')
-<div class="card-body">
-    <form role="form" method="POST" action="{{ route('password.email') }}" class="text-start">
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
+
+    <form method="POST" action="{{ route('password.email') }}">
         @csrf
-        <div class="input-group input-group-outline my-3">
-            <label class="form-label" for="email">{{ __('Email') }}</label>
-            <input id="email" type="email" name="email" class="form-control" value="{{ old('email') }}" required autofocus>
+
+        <!-- Email Address -->
+        <div>
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <div class="text-center">
-            <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">
+        <div class="flex items-center justify-end mt-4">
+            <x-primary-button>
                 {{ __('Email Password Reset Link') }}
-            </button>
+            </x-primary-button>
         </div>
     </form>
-</div>
-
-@endsection
+</x-guest-layout>

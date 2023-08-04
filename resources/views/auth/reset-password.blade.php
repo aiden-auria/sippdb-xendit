@@ -1,15 +1,4 @@
-@extends('layouts.login')
-
-@section('content')
-
-
-<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-    <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
-        <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Sign in</h4>
-    </div>
-</div>
-
-<div class="card-body">
+<x-guest-layout>
     <form method="POST" action="{{ route('password.store') }}">
         @csrf
 
@@ -34,7 +23,9 @@
         <div class="mt-4">
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+            <x-text-input id="password_confirmation" class="block mt-1 w-full"
+                                type="password"
+                                name="password_confirmation" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
@@ -45,7 +36,4 @@
             </x-primary-button>
         </div>
     </form>
-
-</div>
-
-@endsection
+</x-guest-layout>

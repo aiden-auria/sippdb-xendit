@@ -19,25 +19,25 @@
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <!-- CSS Files -->
-    <link id="pagestyle" href="{{ asset('assets/css/material-kit.css?v=3.1.0') }}" rel="stylesheet" />
+    <link id="pagestyle" href="{{ asset('assets/css/material-dashboard.css?v=3.1.0') }}" rel="stylesheet" />
     <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
-    @include('tu.layouts.backend.sidebar')
+    @include('tu.layouts.partials.sidebar')
 
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        @include('tu.layouts.backend.navbar')
+        @include('tu.layouts.partials.navbar')
 
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             @yield('content')
         </div>
         <div class="container-fluid py-4">
-            @include('tu.layouts.backend.footer')
+            @include('tu.layouts.partials.footer')
         </div>
     </main>
     <!--   Core JS Files   -->
@@ -57,7 +57,7 @@
     </script>
     <!-- Github buttons -->
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{{ asset('assets/js/material-kit.min.js?v=3.1.0') }}"></script>
+    <script src="{{ asset('assets/js/material-dashboard.min.js?v=3.1.0') }}"></script>
 </body>
 
 </html>
