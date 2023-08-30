@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-        @include('layouts.frontend.login')
+        @include('layouts.frontend.footer')
     </div>
     <!--   Core JS Files   -->
     <script src="{{ asset('assets/admin/js/core/popper.min.js') }}" type="text/javascript"></script>
