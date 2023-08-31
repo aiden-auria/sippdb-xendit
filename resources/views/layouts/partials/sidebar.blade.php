@@ -22,6 +22,14 @@
                         <span class="hide-menu">Dashboard</span>
                     </a>
                 </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link " href="{{ route('profile.edit') }}" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-user-circle"></i>
+                        </span>
+                        <span class="hide-menu">Profile</span>
+                    </a>
+                </li>
                 <!-- Other sidebar items... -->
             </ul>
         </nav>
