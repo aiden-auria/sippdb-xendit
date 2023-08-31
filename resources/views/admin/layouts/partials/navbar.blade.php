@@ -21,7 +21,8 @@
             <!-- User Dropdown Menu -->
             <ul class="navbar-nav justify-content-end">
                 <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                    <a href="javascript:;" class="nav-link text-body font-weight-bold p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="javascript:;" class="nav-link text-body font-weight-bold p-0" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-user me-sm-1"></i> <!-- Font Awesome user icon -->
                         <span class="d-sm-inline d-none">{{ Auth::guard('admin')->user()->name }}</span>
                     </a>
@@ -39,7 +40,8 @@
                         <li>
                             <form method="POST" action="{{ route('admin.logout') }}">
                                 @csrf
-                                <a href="{{ route('admin.logout') }}" class="dropdown-item" onclick="event.preventDefault(); this.closest('form').submit();">
+                                <a href="{{ route('admin.logout') }}" class="dropdown-item"
+                                    onclick="event.preventDefault(); this.closest('form').submit();">
                                     <i class="fa fa-sign-out-alt me-2"></i> <!-- Font Awesome sign-out-alt icon -->
                                     Log Out
                                 </a>

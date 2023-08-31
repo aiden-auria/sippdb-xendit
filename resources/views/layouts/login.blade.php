@@ -10,7 +10,8 @@
         Material Kit 2 by Creative Tim
     </title>
     <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
     <!-- Nucleo Icons -->
     <link href="{{ asset('assets/admin/css/nucleo-icons.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/admin/css/nucleo-svg.css') }}" rel="stylesheet" />
@@ -19,16 +20,18 @@
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <!-- CSS Files -->
-    <link id="pagestyle" href="{{ asset('assets/admin/css/material-kit.css?v=3.0.4') }}" rel="stylesheet" /> <!-- Nepcha Analytics (nepcha.com) -->
+    <link id="pagestyle" href="{{ asset('assets/admin/css/material-kit.css?v=3.0.4') }}" rel="stylesheet" />
+    <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
 </head>
 
 <body class="sign-in-basic">
     <!-- Navbar Transparent -->
-    @include('layouts.frontend.navbar')
     <!-- End Navbar -->
-    <div class="page-header align-items-start min-vh-100" style="background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');" loading="lazy">
+    <div class="page-header align-items-start min-vh-100"
+        style="background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');"
+        loading="lazy">
         <span class="mask bg-gradient-dark opacity-6"></span>
         <div class="container my-auto">
             <div class="row">
@@ -39,12 +42,12 @@
                 </div>
             </div>
         </div>
-        @include('layouts.frontend.footer')
     </div>
     <!--   Core JS Files   -->
     <script src="{{ asset('assets/admin/js/core/popper.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/admin/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/admin/js/plugins/perfect-scrollbar.min.js') }}"></script> <!-- Control Center for Material UI Kit: parallax effects, scripts for the example pages etc -->
+    <script src="{{ asset('assets/admin/js/plugins/perfect-scrollbar.min.js') }}"></script>
+    <!-- Control Center for Material UI Kit: parallax effects, scripts for the example pages etc -->
     <!--  Google Maps Plugin    -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
     <script src="{{ asset('assets/admin/js/material-kit.min.js?v=3.0.4') }}" type="text/javascript"></script>
