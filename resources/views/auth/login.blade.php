@@ -47,7 +47,7 @@
                                                 Remember this Device
                                             </label>
                                         </div>
-                                        <a class="text-primary fw-bold" href="{{ route('passwornpod.request') }}">Forgot
+                                        <a class="text-primary fw-bold" href="{{ route('password.request') }}">Forgot
                                             Password ?</a>
                                     </div>
                                     <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign
