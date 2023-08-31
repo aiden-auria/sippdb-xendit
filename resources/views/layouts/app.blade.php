@@ -1,64 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
-    <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
-    <title>
-        Material Dashboard 2 by Creative Tim
-    </title>
-    <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
-    <!-- Nucleo Icons -->
-    <link href="{{ asset('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
-    <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-    <!-- CSS Files -->
-    <link id="pagestyle" href="{{ asset('assets/css/material-kit.css?v=3.1.0') }}" rel="stylesheet" />
-    <!-- Nepcha Analytics (nepcha.com) -->
-    <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
-    <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modernize Free</title>
+  <link rel="shortcut icon" type="image/png" href="{{ asset('assets/user/images/logos/favicon.png') }}" />
+  <link rel="stylesheet" href="{{ asset('assets/user/css/styles.min.css') }}" />
 </head>
 
-<body class="g-sidenav-show  bg-gray-200">
-
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
     @include('layouts.partials.sidebar')
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      @include('layouts.partials.header')
 
-    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        <!-- Navbar -->
-        @include('layouts.partials.navbar')
-
-        <!-- End Navbar -->
-        <div class="container-fluid py-4">
-            @yield('content')
+      <!--  Header End -->
+      <div class="container-fluid">
+        <!--  Row 1 -->
+        @yield('content')
+        <div class="py-6 px-6 text-center">
+          <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank" class="pe-1 text-primary text-decoration-underline">AdminMart.com</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a></p>
         </div>
-        <div class="container-fluid py-4">
-            @include('layouts.partials.footer')
-        </div>
-    </main>
-    <!--   Core JS Files   -->
-    <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
-    <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
-            }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
-
-    </script>
-    <!-- Github buttons -->
-    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{{ asset('assets/js/material-kit.min.js?v=3.1.0') }}"></script>
+      </div>
+    </div>
+  </div>
+  <script src="{{ asset('assets/user/libs/jquery/dist/jquery.min.js') }}"></script>
+  <script src="{{ asset('assets/user/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('assets/user/js/sidebarmenu.js') }}"></script>
+  <script src="{{ asset('assets/user/js/app.min.js') }}"></script>
+  <script src="{{ asset('assets/user/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
+  <script src="{{ asset('assets/user/libs/simplebar/dist/simplebar.js') }}"></script>
+  <script src="{{ asset('assets/user/js/dashboard.js') }}"></script>
 </body>
 
 </html>
