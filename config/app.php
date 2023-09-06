@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://aidenauria.my.id/'),
 
     'asset_url' => env('ASSET_URL'),
 
@@ -122,7 +122,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY','tcuhz7uhzxkjbqgmtz0fszzm6upopswe'),
 
     'cipher' => 'AES-256-CBC',
 
