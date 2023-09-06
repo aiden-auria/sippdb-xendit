@@ -35,6 +35,28 @@ class PembayaranController extends Controller
             'data' => $createInvoice['invoice_url']
         ]);
 
+
+
         // You might want to handle the response from the Xendit API here, for example:
+    }
+    public function webhook(Request $request)
+    {
+        $getInvoice = \Xendit\Invoice::retrieve($request->id);
+
+        $pembayaran = Pembayaran::where('external_id', $request->external_id)->firstOrFail();
+        if ($pembayaran->status == 'settled') {
+            return response()->json([
+                'data' => ['telah di bayar']
+            ]);
+
+        }
+        $pembayaran->status = strtolower($getInvoice['status']);
+        $pembayaran->save();
+
+        return response()->json([
+            'data' => ['berhasil']
+        ]);
+
+
     }
 }
