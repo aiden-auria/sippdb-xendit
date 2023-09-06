@@ -10,9 +10,12 @@ use Xendit\Xendit;
 
 class PembayaranController extends Controller
 {
+    private $xenditApiKey;
+
     public function __construct()
     {
-        Xendit::setApiKey('xnd_development_Moq6CWAHyizqbH5gy0Eath95qqiihbVwAb7iaYhfDuaaSPejy1VfmwoDlBmRWK');
+        $this->xenditApiKey = 'xnd_development_Moq6CWAHyizqbH5gy0Eath95qqiihbVwAb7iaYhfDuaaSPejy1VfmwoDlBmRWK';
+        Xendit::setApiKey($this->xenditApiKey);
     }
 
     public function index()
@@ -44,9 +47,9 @@ class PembayaranController extends Controller
 
         $params = [
             'external_id' => (string) Str::uuid(),
-            'payer_email' => $request->payer_email,
-            'description' => $request->description,
-            'amount' => $request->amount,
+            'payer_email' => $request->input('payer_email'),
+            'description' => $request->input('description'),
+            'amount' => $request->input('amount'),
             'redirect_url' => 'https://faerul.com',
         ];
 
@@ -57,43 +60,39 @@ class PembayaranController extends Controller
         }
 
         $pembayaran = new Pembayaran;
-        $pembayaran->external_id = $params["external_id"];
-        $pembayaran->payer_email = $params["payer_email"];
-        $pembayaran->description = $params["description"];
-        $pembayaran->amount = $params["amount"];
+        $pembayaran->external_id = $params['external_id'];
+        $pembayaran->payer_email = $params['payer_email'];
+        $pembayaran->description = $params['description'];
+        $pembayaran->amount = $params['amount'];
         $pembayaran->status = 'pending';
         $pembayaran->checkout_link = $createInvoice['invoice_url'];
         $pembayaran->save();
 
-        // return response()->json(['message' => 'Payment created successfully'], 201);
         return redirect()->route('pembayaran.index');
-
     }
+    public function webhook (Request $request){
 
-    // public function webhook(Request $request)
-    // {
-    //     // Retrieve the invoice information from Xendit based on the provided ID
-    //     $invoiceId = $request->id;
-    //     $externalId = $request->external_id;
+        $getInvoice = \Xendit\Invoice::retrieve($request->id);
 
-    //     try {
-    //         $getInvoice = \Xendit\Invoice::retrieve($invoiceId);
-    //     } catch (\Xendit\Exceptions\ApiException $e) {
-    //         return response()->json(['error' => $e->getMessage()], 500);
-    //     }
+        // Get data
 
-    //     // Find the corresponding payment record in your database using external_id
-    //     $pembayaran = Pembayaran::where('external_id', $externalId)->first();
+        $payment = Payment::where('external_id', $request->external_id)->firstOrFaild();
 
-    //     if (!$pembayaran) {
-    //         return response()->json(['error' => 'Payment record not found'], 404);
-    //     }
+        if ($payment->status == 'settled'){
 
-    //     // Update the payment status in your database with the Xendit invoice status
-    //     $newStatus = strtolower($getInvoice['status']);
-    //     $pembayaran->status = $newStatus;
-    //     $pembayaran->save();
+        return response()->json(['data' => 'Payment has been already processed']);
 
-    //     return response()->json(['message' => 'Payment status updated successfully']);
-    // }
+        }
+
+        // Update status payment
+
+        $payment->status = strtolower($getInvoice['status']);
+
+        $payment->save();
+
+        return response()->json(['data' => 'Payment has been already processed']);
+
+        }
+
+
 }

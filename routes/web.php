@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
 Route::get('/pembayaran/create', [PembayaranController::class, 'create'])->name('pembayaran.create');
-Route::get('/pembayaran/{pembayaran}', [PembayaranController::class, 'show'])->name('pembayaran.show');
+
 
 
 require __DIR__ . '/auth.php';
