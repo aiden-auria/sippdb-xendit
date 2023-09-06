@@ -12,9 +12,12 @@ return new class extends Migration {
     {
         Schema::create('pembayarans', function (Blueprint $table) {
             $table->id();
-            $table->string('checkout_link');
-            $table->string('external_id');
+            $table->string('external_id')->unique();
+            $table->string('payer_email');
+            $table->text('description');
+            $table->decimal('amount', 10, 2);
             $table->string('status');
+            $table->string('checkout_link');
             $table->timestamps();
         });
     }
