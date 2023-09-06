@@ -92,24 +92,40 @@ class PembayaranController extends Controller
     public function webhook(Request $request)
     {
         // Retrieve the invoice information from Xendit based on the provided ID
-        $getInvoice = \Xendit\Invoice::retrieve($request->id);
+        $invoiceId = $request->id;
+        $externalId = $request->external_id;
+
+        try {
+            $getInvoice = \Xendit\Invoice::retrieve($invoiceId);
+        } catch (\Xendit\Exceptions\ApiException $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ], 500);
+        }
 
         // Find the corresponding payment record in your database using external_id
-        $pembayaran = Pembayaran::where('external_id', $request->external_id)->firstOrFail();
+        $pembayaran = Pembayaran::where('external_id', $externalId)->first();
+
+        if (!$pembayaran) {
+            return response()->json([
+                'error' => 'Payment record not found',
+            ], 404);
+        }
 
         // Check if the payment has already been settled
-        if ($pembayaran->status == 'settled') {
+        if ($pembayaran->status === 'settled') {
             return response()->json([
-                'data' => ['telah di bayar']
+                'message' => 'Payment has already been settled',
             ]);
         }
 
         // Update the payment status in your database with the Xendit invoice status
-        $pembayaran->status = strtolower($getInvoice['status']);
+        $newStatus = strtolower($getInvoice['status']);
+        $pembayaran->status = $newStatus;
         $pembayaran->save();
 
         return response()->json([
-            'data' => ['berhasil']
+            'message' => 'Payment status updated successfully',
         ]);
     }
 }
