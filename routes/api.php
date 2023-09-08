@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CalonSiswaController;
 use App\Http\Controllers\PembayaranController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('/pembayaran', [PembayaranController::class, 'store'])->name('pembayaran.store');
+Route::post('/calon-siswa', [CalonSiswaController::class, 'store'])->name('calon-siswa.store');
 
 
 

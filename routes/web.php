@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\CalonSiswaController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +31,11 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
 Route::get('/pembayaran/create', [PembayaranController::class, 'create'])->name('pembayaran.create');
+Route::get('/form', 'CalonSiswaController@create');
 
 
+
+Route::get('/calon-siswa/create', [CalonSiswaController::class, 'create']);
 
 
 
