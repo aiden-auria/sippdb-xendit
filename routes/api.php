@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('/pembayaran', [PembayaranController::class, 'store'])->name('pembayaran.store');
-Route::put('/pembayaran/{externalId}', [PembayaranController::class, 'update'])->name('pembayaran.update');
+
 
 
 

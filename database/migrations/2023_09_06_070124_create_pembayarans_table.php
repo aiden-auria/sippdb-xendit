@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('external_id')->unique();
             $table->string('payer_email');
             $table->text('description');
-            $table->decimal('amount', 10, 2);
+            $table->bigInteger('amount'); // Use 'bigInteger' for large integers
             $table->string('status');
             $table->string('checkout_link');
             $table->timestamps();
