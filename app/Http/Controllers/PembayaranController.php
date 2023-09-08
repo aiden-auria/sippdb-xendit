@@ -20,6 +20,9 @@ class PembayaranController extends Controller
 
     public function index()
     {
+        // First, run the update method to update your records from Xendit
+        $this->update();
+
         // Retrieve all pembayaran
         $pembayaran = Pembayaran::all();
 
@@ -70,29 +73,33 @@ class PembayaranController extends Controller
 
         return redirect()->route('pembayaran.index');
     }
-    public function webhook (Request $request){
+    public function update()
+    {
+        try {
+            // Retrieve all invoices from Xendit
+            $invoices = \Xendit\Invoice::retrieveAll();
 
-        $getInvoice = \Xendit\Invoice::retrieve($request->id);
+            // Save the retrieved invoices to your database
+            foreach ($invoices as $xenditInvoice) {
+                // Create or update records in your database based on $xenditInvoice
+                $pembayaran = Pembayaran::updateOrCreate(
+                    ['external_id' => $xenditInvoice['external_id']],
+                    [
+                        'payer_email' => $xenditInvoice['payer_email'],
+                        'description' => $xenditInvoice['description'],
+                        'amount' => $xenditInvoice['amount'],
+                        'status' => strtolower($xenditInvoice['status']),
+                        'checkout_link' => $xenditInvoice['invoice_url'],
+                    ]
+                );
+            }
 
-        // Get data
-
-        $payment = Payment::where('external_id', $request->external_id)->firstOrFaild();
-
-        if ($payment->status == 'settled'){
-
-        return response()->json(['data' => 'Payment has been already processed']);
-
+            // Return the retrieved invoices as JSON response
+            return response()->json(['data' => $invoices]);
+        } catch (\Xendit\Exceptions\ApiException $e) {
+            // Handle any API exceptions here
+            return response()->json(['error' => $e->getMessage()], 500);
         }
-
-        // Update status payment
-
-        $payment->status = strtolower($getInvoice['status']);
-
-        $payment->save();
-
-        return response()->json(['data' => 'Payment has been already processed']);
-
-        }
-
+    }
 
 }
