@@ -1,29 +1,7 @@
 @extends('depan.app')
 
 @section('content')
-    <header id="header" class="fixed-top d-flex align-items-center">
-        <div class="container">
-            <div class="header-container d-flex align-items-center">
-                <div class="logo mr-auto">
-                    <h1 class="text-light"><a href="{{ route('landing-page') }}"><span>Harapan Bangsa</span></a></h1>
-                    <!-- Uncomment below if you prefer to use an image logo -->
-                    <!-- <a href="index.html"><img src="{{ asset('assets/img/logo.png') }}" alt="" class="img-fluid"></a>-->
-                </div>
 
-                <nav class="nav-menu d-none d-lg-block">
-                    <ul>
-                        <li class="active"><a href="#header">Beranda</a></li>
-                        <li><a href="#about">Tentang</a></li>
-                        <li><a href="#services">Fasilitas</a></li>
-                        <li><a href="#portfolio">Prestasi</a></li>
-                        <li><a href="#team">Pendiri</a></li>
-                        <li><a href="#contact">Kontak</a></li>
-                        <li class="get-started"><a href="{{ route('daftar') }}">Daftar</a></li>
-                    </ul>
-                </nav><!-- .nav-menu -->
-            </div><!-- End Header Container -->
-        </div>
-    </header>
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
         <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
